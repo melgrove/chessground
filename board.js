@@ -200,7 +200,7 @@ export function setSelected(state, key) {
     state.selected = key;
     if (isPremovable(state, key)) {
         // calculate chess premoves if custom premoves are not passed
-        if (!(state.premovable.customDests)) {
+        if (!state.premovable.customDests) {
             state.premovable.dests = premove(state.pieces, key, state.premovable.castle);
         }
     }

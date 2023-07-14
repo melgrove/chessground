@@ -90,3 +90,4 @@ export declare const files: readonly ["a", "b", "c", "d", "e", "f", "g", "h"];
 export declare const ranks: readonly ["1", "2", "3", "4", "5", "6", "7", "8"];
 export type RanksPosition = 'left' | 'right';
 export type BrushColor = 'green' | 'red' | 'blue' | 'yellow';
+export type SquareClasses = Map<Key, string>;

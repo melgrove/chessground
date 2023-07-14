@@ -178,7 +178,7 @@ function posZIndex(pos, asWhite) {
 }
 const pieceNameOf = (piece) => `${piece.color} ${piece.role}`;
 function computeSquareClasses(s) {
-    var _a, _b;
+    var _a, _b, _c;
     const squares = new Map();
     if (s.lastMove && s.highlight.lastMove)
         for (const k of s.lastMove) {
@@ -194,7 +194,7 @@ function computeSquareClasses(s) {
                 for (const k of dests) {
                     addSquare(squares, k, 'move-dest' + (s.pieces.has(k) ? ' oc' : ''));
                 }
-            const pDests = s.premovable.customDests ? (_b = s.premovable.customDests) === null || _b === void 0 ? void 0 : _b.get(s.selected) : s.premovable.dests;
+            const pDests = (_c = (_b = s.premovable.customDests) === null || _b === void 0 ? void 0 : _b.get(s.selected)) !== null && _c !== void 0 ? _c : s.premovable.dests;
             if (pDests)
                 for (const k of pDests) {
                     addSquare(squares, k, 'premove-dest' + (s.pieces.has(k) ? ' oc' : ''));
@@ -211,6 +211,11 @@ function computeSquareClasses(s) {
     if (o)
         for (const k of o.keys)
             addSquare(squares, k, 'exploding' + o.stage);
+    if (s.highlight.custom) {
+        s.highlight.custom.forEach((v, k) => {
+            addSquare(squares, k, v);
+        });
+    }
     return squares;
 }
 function addSquare(squares, key, klass) {

@@ -22,6 +22,7 @@ export interface HeadlessState {
     highlight: {
         lastMove: boolean;
         check: boolean;
+        custom?: cg.SquareClasses;
     };
     animation: {
         enabled: boolean;

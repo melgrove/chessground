@@ -19,6 +19,7 @@ export interface Config {
     highlight?: {
         lastMove?: boolean;
         check?: boolean;
+        custom?: cg.SquareClasses;
     };
     animation?: {
         enabled?: boolean;
